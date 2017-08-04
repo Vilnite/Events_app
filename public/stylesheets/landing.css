@@ -1,0 +1,107 @@
+body {
+    background: black;
+}
+
+#landing-header {
+  /*z-index is forvard and backward (like x and y is up and down, left and right) giving 3d effect*/
+  /*so 1 is coming forward towards us and -1 is going backwards*/
+  z-index: 1;
+  /*in order to use z-index you have to change position to smth other than static, in this case - relative*/
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+  /*vh - view hight*/
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+/*this styling is for the whole slideshow*/
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /*to take up the intire page*/
+  top: 0;
+  left: 0;
+  z-index: 0;
+  /*to make sure that the background images are behind the other content */
+  list-style: none;
+  /*removes the bullet points*/
+  margin: 0;
+  padding: 0;
+}
+
+
+/*this styling is for each li item in slideshow sepreately*/
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  /*allows the images to take up the intire space in the page*/
+  background-position: 50% 50%;
+  /*this will center images perfectly in the page*/
+  background-repeat: no-repeat;
+  /*so the images would not reapeat verticaly or horizontaly*/
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite;
+  /*allows to fade images in and out, animation will last for 50s, linear means it will have consistant speed from beginning till end, infinite means that animation will loop infinitely.*/
+}
+
+
+/*this will set up the animation of image slide*/
+/*animation delay is set for 10 s, so that's whe the next image shows up, and it goes till 50s as set above in slideshow li {}.*/
+.slideshow li:nth-child(1) { 
+  background-image: url(https://source.unsplash.com/jRAIFF74LUE); 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(https://source.unsplash.com/qWlkCwBnwOE);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://source.unsplash.com/5P4O30jhgCY);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://source.unsplash.com/jRAIFF74LUE);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://source.unsplash.com/qWlkCwBnwOE);
+  animation-delay: 40s; 
+}
+
+
+
+/*here's the @keyframes selector that gives the animation with a name imageAnimation rules what will happen to various keyframes within the animation */
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+    /*ease-in and ease-out gives smoother transition when fading from 0 opacity to 1*/
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+    /*the whola animation goes up to 100%, here it goes to 30% because after 30% it goes back (overlaps) to 0% and it starts all over again.*/
+}
+
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+/*This means that older browsers that don't support these styles will have only one image at the backgroun*/
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+
