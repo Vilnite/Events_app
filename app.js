@@ -18,8 +18,8 @@ var commentRoutes   = require("./routes/comments"),
 
 
 
-mongoose.connect("mongodb://localhost/event", {useMongoClient: true});
-// mongoose.connect("mongodb://kristine:vilnite@ds131583.mlab.com:31583/eventsapp");
+// mongoose.connect("mongodb://localhost/event", {useMongoClient: true});
+mongoose.connect("mongodb://kristine:vilnite@ds131583.mlab.com:31583/eventsapp");
 mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
