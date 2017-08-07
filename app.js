@@ -18,10 +18,9 @@ var commentRoutes   = require("./routes/comments"),
 
 
 
-// mongoose.connect("mongodb://localhost/event", {useMongoClient: true});
-mongoose.connect("mongodb://kristine:vilnite@ds131583.mlab.com:31583/eventsapp");
-// mongoose.connect("mongodb://Kristine:G*4E@kkT9Q5XS00%@ds131583.mlab.com:31583/events_app", {useMongoClient: true});
-// mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/event", {useMongoClient: true});
+// mongoose.connect("mongodb://kristine:vilnite@ds131583.mlab.com:31583/eventsapp");
+mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
