@@ -17,8 +17,8 @@ var commentRoutes   = require("./routes/comments"),
 
 
 
-
-mongoose.connect("mongodb://localhost/event", {useMongoClient: true});
+var url = process.env.DATABASEURL || "mongodb://localhost/event"
+mongoose.connect(url, {useMongoClient: true});
 // mongoose.connect("mongodb://kristine:vilnite@ds131583.mlab.com:31583/eventsapp");
 mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({extended: true}));
@@ -26,6 +26,8 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
+
+
 
 
 //=====PASSPORT CONFIGURATION=======================
