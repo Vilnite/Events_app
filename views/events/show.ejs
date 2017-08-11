@@ -1,22 +1,22 @@
 <% include ../partials/header %>
 
 <div class="container">
-    <div class="row">
-        <div class=col-md-3>
-            <p class="lead">Events</p>
-            <div class="list-group">
-                <li class="list-group-item active">Data 1</li>
-                <li class="list-group-item">Data 2</li>
-                <li class="list-group-item">Data 3</li>
-            </div>
-        </div>
-        <div class="col-md-9">
+    <!--<div class="row">-->
+    <!--    <div class=col-md-3>-->
+    <!--        <p class="lead">Events</p>-->
+    <!--        <div class="list-group">-->
+    <!--            <li class="list-group-item active">Data 1</li>-->
+    <!--            <li class="list-group-item">Data 2</li>-->
+    <!--            <li class="list-group-item">Data 3</li>-->
+    <!--        </div>-->
+    <!--    </div>-->
+        <div class="col-md-12">
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= event.image %>">
                 <div class="caption-full">
-                    <h4 class="pull-right">$<%= event.price %></h4>
                     <h4><a><%= event.name %></a></h4>
                     <p><%= event.description %></p>
+                    <h4 class="pull-right">$<%= event.price %></h4>
                     <p><em>Posted by <%= event.author.username %></em></p>
                     <!--the if statement will hide the functions (edit/delete) from users that are not authors of specific event-->
                     <% if(currentUser && event.author.id.equals(currentUser._id)){ %>    
@@ -29,7 +29,7 @@
             </div>
             <div class="well">
                 <div class="text-right">
-                    <a href="/events/<%= event._id %>/comments/new">Add New Comment</a>                     
+                    <a href="/events/<%= event._id %>/comments/new">Add Comment</a>                     
                 </div>
                 <hr> 
                 <% event.comments.forEach(function(comment){ %>
@@ -51,8 +51,10 @@
                 <% }); %>
             </div>
         </div>
-    </div>
-    <a href="/events">BACK</a>
+        <div class="col-md-12">
+            <a href="/events" class="btn btn-secondary active" role="button">BACK</a>
+        </div>
+    <!--</div>-->
 </div>
 
 <% include ../partials/footer %>
