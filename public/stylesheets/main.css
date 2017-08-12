@@ -1,3 +1,8 @@
+body {
+    background: #CFD8DC;
+    background-size: cover;
+}
+
 .thumbnail img {
     width: 100%;
 }
